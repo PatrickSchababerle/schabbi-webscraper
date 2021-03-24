@@ -1,6 +1,7 @@
 const puppeteer = require('puppeteer');
 const Sequelize = require('sequelize');
 const crypto    = require('crypto');
+var ProgressBar = require('progress');
 
 class Schabbi {
     constructor(url, config) {
@@ -9,6 +10,13 @@ class Schabbi {
         this.finished = [];
         this.result = [];
         this.maxAsyncs = 5;
+        this.runtime = 0;
+        this.progressBar = new ProgressBar('Crawling [:bar] :current/:total', {
+            complete: '=',
+            incomplete: ' ',
+            width: 20,
+            total: 100
+        });
         this.followExternal = config.followExternal;
         this.freshStart = config.freshStart;
         this.db = new Sequelize(config.db.database, config.db.username, config.db.password, config.db.sequelizeOpts);
@@ -56,22 +64,33 @@ class Schabbi {
         });
     }
     start = function() {
-        var self = this;
-        if(this.freshStart){
-            this.urlTable.destroy({
-                where: {
-                    domain : this.domain
-                }
-            }).then(function(){
+        console.clear();
+        return new Promise(resolve => {
+            var self = this;
+            if(this.freshStart){
+                this.urlTable.destroy({
+                    where: {
+                        domain : this.domain
+                    }
+                }).then(function(){
+                    self.crawl();
+                });
+            }else{
                 self.crawl();
-            });
-        }else{
-            self.crawl();
-        }
-        
-    }
-    stop() {
-        console.log(this.result);
+            }
+            this.working = setInterval(function(){
+
+                self.updateProgress();
+                
+                if(self.queue.length === 0){
+                    clearInterval(self.working);
+                    return resolve(self.result);
+                }else{
+                    self.runtime++;
+                }
+
+            }, 1000);
+        });
     }
     crawl() {
         var urls = (this.queue.length > this.maxAsyncs) ? this.queue.slice(0, this.maxAsyncs) : this.queue;
@@ -88,10 +107,6 @@ class Schabbi {
                 this.finished.push(url);
                 // increase counter
                 counter++;
-                // print progress
-                process.stdout.cursorTo(0);
-                process.stdout.clearLine();
-                process.stdout.write("Queue: " +  this.queue.length + " | " + "Results: " +  this.result.length);
             });
         }
         var interval = setInterval(function(){
@@ -99,8 +114,6 @@ class Schabbi {
                 clearInterval(interval);
                 if(self.queue.length > 0){
                     self.crawl();
-                }else{
-                    self.stop();
                 }
             }
         }, 500);
@@ -120,6 +133,8 @@ class Schabbi {
             (async () => {
                 const browser = await puppeteer.launch();
                 const page = await browser.newPage();
+                // set user agent (override the default headless User Agent)
+                await page.setUserAgent("Mozilla/5.0 (compatible; schabbi-webscraper/0.0.1; +https://github.com/PatrickSchababerle/schabbi-webscaper)");
                 try{
                     const response = await page.goto(url);
                     const hrefs = await page.$$eval('a[href*="/"]', as => as.map(a => a.href));
@@ -154,6 +169,19 @@ class Schabbi {
     insert(params) {
         return this.urlTable.upsert(params);
     }
+    updateProgress(){
+        var self = this;
+        var current = parseFloat(self.result.length/self.queue.length*100).toFixed(0);
+    
+        const dots = "|".repeat(current/5);
+        const left = 20 - (current/5);
+        const empty = " ".repeat(left);
+
+        console.clear();
+
+        process.stdout.write(`\r Progress |${dots}${empty}| ${current}%\n\n`);
+        process.stdout.write("\r Queue: " +  self.queue.length + " | Results: " +  self.result.length + " | Runtime: " + self.runtime.toString().toHHMMSS() + " | Estimated: " + ((self.runtime/self.result.length)*self.queue.length).toString().toHHMMSS());
+    }
 }
 
 Array.prototype.remove = function() {
@@ -181,6 +209,18 @@ String.prototype.hostname = function() {
 
 String.prototype.domain = function() {
     return this.replace('http://','').replace('https://','').replace('www.','').split(/[/?#]/)[0];
+}
+
+String.prototype.toHHMMSS = function () {
+    var sec_num = parseInt(this, 10); // don't forget the second param
+    var hours   = Math.floor(sec_num / 3600);
+    var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+    var seconds = sec_num - (hours * 3600) - (minutes * 60);
+
+    if (hours   < 10) {hours   = "0"+hours;}
+    if (minutes < 10) {minutes = "0"+minutes;}
+    if (seconds < 10) {seconds = "0"+seconds;}
+    return hours+':'+minutes+':'+seconds;
 }
 
 module.exports = Schabbi;

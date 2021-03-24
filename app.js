@@ -1,6 +1,6 @@
 const Schabbi = require('./Schabbi.js');
 
-const schabbi = new Schabbi('https://www.digitalsterne.de', {
+const schabbi = new Schabbi('https://www.loewenstark.com/', {
     followExternal : false,
     freshStart : true,
     db : {
@@ -17,26 +17,15 @@ const schabbi = new Schabbi('https://www.digitalsterne.de', {
     }
 });
 
-schabbi.start();
-
-// async function test(val) {
-//     return new Promise(resolve => {
-//         setTimeout(() => {
-//             resolve(console.log(val));
-//         }, 5000);
-//     });
-// }
-
-// const files = ['A', 'B', 'C'];
-
-// console.log('Start');
-
-// for (const [index, file] of files.entries()) {
-//     test(file).then(() => {
-//         if((index + 1) == files.length){
-//             console.log('End');
-//         }else{
-//             console.log('---');
-//         }
-//     });
-// }
+schabbi.start().then(function(results){
+    var output = {};
+    results.forEach((result) => {
+        const url = result[0];
+        const res = result[1] || 'External';
+        if(output[res] === undefined){
+            output[res] = [];
+        }
+        output[res].push(url);
+    });
+    console.log("\n", output);
+});
