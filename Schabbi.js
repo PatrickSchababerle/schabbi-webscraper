@@ -1,7 +1,6 @@
 const puppeteer = require('puppeteer');
 const Sequelize = require('sequelize');
 const crypto    = require('crypto');
-var ProgressBar = require('progress');
 
 class Schabbi {
     constructor(url, config) {
@@ -171,7 +170,7 @@ class Schabbi {
     }
     updateProgress(){
         var self = this;
-        var current = parseFloat(self.result.length/self.queue.length*100).toFixed(0);
+        var current = parseFloat(self.result.length/(self.queue.length + self.result.length)*100).toFixed(0);
     
         const dots = "|".repeat(current/5);
         const left = 20 - (current/5);

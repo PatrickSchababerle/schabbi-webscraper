@@ -1,27 +1,24 @@
 {
-  "name": "schabbi-webscaper",
-  "version": "0.0.1",
+  "name": "schabbi-webscraper",
+  "version": "1.0.0",
   "description": "Easy to use crawling solution for websites.",
-  "main": "app.js",
+  "main": "Schabbi.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PatrickSchababerle/schabbi-webscaper.git"
+    "url": "git+https://github.com/PatrickSchababerle/schabbi-webscraper.git"
   },
   "author": "Patrick Schababerle",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/PatrickSchababerle/schabbi-webscaper/issues"
+    "url": "https://github.com/PatrickSchababerle/schabbi-webscraper/issues"
   },
-  "homepage": "https://github.com/PatrickSchababerle/schabbi-webscaper#readme",
+  "homepage": "https://github.com/PatrickSchababerle/schabbi-webscraper#readme",
   "dependencies": {
-    "cli-progress": "^3.9.0",
     "crypto": "^1.0.1",
     "mysql2": "^2.2.5",
-    "progress": "^2.0.3",
     "puppeteer": "^8.0.0",
     "sequelize": "^6.6.2"
   }
