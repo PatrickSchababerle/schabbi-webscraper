@@ -1,7 +1,6 @@
 <!-- [START badges] -->
 
-![Travis](https://img.shields.io/travis/PatrickSchababerle/schabbi-webscraper)
-![Gitlab code coverage](https://shields.io/gitlab/coverage/PatrickSchababerle/schabbi-webscraper/master)
+[![Build Status](https://travis-ci.com/PatrickSchababerle/schabbi-webscraper.svg?token=x3Xxx6fmnZtByDoY9d4v&branch=master)](https://travis-ci.com/PatrickSchababerle/schabbi-webscraper)
 [![npm puppeteer package](https://img.shields.io/npm/v/schabbi)](https://npmjs.org/package/schabbi)
 
 <!-- [END badges] -->
