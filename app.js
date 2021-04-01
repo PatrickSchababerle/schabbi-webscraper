@@ -1,6 +1,6 @@
 const Schabbi = require('./Schabbi.js');
 
-const schabbi = new Schabbi('https://www.loewenstark.com/', {
+const schabbi = new Schabbi('https://www.example.com/', {
     followExternal : false,
     freshStart : true,
     db : {
