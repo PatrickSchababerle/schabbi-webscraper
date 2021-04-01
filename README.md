@@ -1,7 +1,7 @@
 <!-- [START badges] -->
 
 [![Build Status](https://travis-ci.com/PatrickSchababerle/schabbi-webscraper.svg?token=x3Xxx6fmnZtByDoY9d4v&branch=master)](https://travis-ci.com/PatrickSchababerle/schabbi-webscraper)
-[![npm puppeteer package](https://img.shields.io/npm/v/schabbi)](https://npmjs.org/package/schabbi)
+[![npm puppeteer package](https://img.shields.io/npm/v/schabbi-webscraper)](https://npmjs.org/package/schabbi-webscraper)
 
 <!-- [END badges] -->
 
@@ -13,7 +13,7 @@ Easy to use and simple webcrawler.
 
 ### via NPM
 
-    $ npm i schabbi
+    $ npm i schabbi-webscraper
 
 ### via Github
 
