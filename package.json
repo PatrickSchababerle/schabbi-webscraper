@@ -4,7 +4,7 @@
   "description": "Easy to use crawling solution for websites.",
   "main": "Schabbi.js",
   "scripts": {
-    "test": "node app.js"
+    "test": "node ./test/crawl.js"
   },
   "repository": {
     "type": "git",
@@ -17,9 +17,6 @@
   },
   "homepage": "https://github.com/PatrickSchababerle/schabbi-webscraper#readme",
   "dependencies": {
-    "crypto": "^1.0.1",
-    "mysql2": "^2.2.5",
-    "puppeteer": "^8.0.0",
-    "sequelize": "^6.6.2"
+    "puppeteer": "^8.0.0"
   }
 }
