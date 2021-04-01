@@ -13,6 +13,13 @@ class Schabbi {
             browser : {}
         }
     }
+
+    /**
+     * Set options in class variables
+     * @param  {object} object  The configuration object
+     * @return {class}          Returning current Schabbi instance
+     */
+
     withOptions(object){
         for(var option in object){
             var config = object[option];
@@ -20,11 +27,25 @@ class Schabbi {
         }
         return this;
     }
+
+    /**
+     * Set entry url for the crawler to begin
+     * @param  {string} string  Entry point url
+     * @return {class}          Returning current Schabbi instance
+     */
+
     setUrl(string){
         this.domain = string.domain();
         this.queue.enqueue(string);
         return this;
     }
+
+    /**
+     * Process with next url in queue
+     * @param  {class} browser  Puppeteer browser instance
+     * @return {promise}        Returning promise till page has been crawled
+     */
+
     getPage(browser){
 
         var self = this;
@@ -91,6 +112,12 @@ class Schabbi {
 
         })();
     }
+
+    /**
+     * Initial function to start the crawling process
+     * @return {promise}        Returning promise till all pages in queue have been crawled
+     */
+
     crawl(){
         var self = this;
         return (async () => {
@@ -102,45 +129,22 @@ class Schabbi {
             return self.result;
         })();
     }
+
 }
 
-Array.prototype.remove = function() {
-    var what, a = arguments, L = a.length, ax;
-    while (L && this.length) {
-        what = a[--L];
-        while ((ax = this.indexOf(what)) !== -1) {
-            this.splice(ax, 1);
-        }
-    }
-    return this;
-};
-
-String.prototype.hostname = function() {
-    var hostname;
-    if (this.indexOf("//") > -1) {
-        hostname = this.split('/')[2];
-    } else {
-        hostname = this.split('/')[0];
-    }
-    hostname = hostname.split(':')[0];
-    hostname = hostname.split('?')[0];
-    return hostname;
-}
+/**
+ * Helper function: Get domain of url string
+ * @param  {string} url     URL string
+ * @return {string}         Returning domain string of url
+ */
 
 String.prototype.domain = function() {
     return this.replace('http://','').replace('https://','').replace('www.','').split(/[/?#]/)[0];
 }
 
-String.prototype.toHHMMSS = function () {
-    var sec_num = parseInt(this, 10); // don't forget the second param
-    var hours   = Math.floor(sec_num / 3600);
-    var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
-    var seconds = sec_num - (hours * 3600) - (minutes * 60);
-
-    if (hours   < 10) {hours   = "0"+hours;}
-    if (minutes < 10) {minutes = "0"+minutes;}
-    if (seconds < 10) {seconds = "0"+seconds;}
-    return hours+':'+minutes+':'+seconds;
-}
+/**
+ * Schabbi Webscraper Module
+ * @module Schabbi
+ */
 
 module.exports = Schabbi;
