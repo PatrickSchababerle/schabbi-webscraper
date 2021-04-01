@@ -1,16 +1,25 @@
 {
   "name": "schabbi-webscraper",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Easy to use crawling solution for websites.",
   "main": "Schabbi.js",
   "scripts": {
     "test": "node ./test/crawl.js"
   },
+  "keywords": [
+    "nodejs",
+    "npm",
+    "crawler",
+    "nodejs crawler",
+    "webcrawler",
+    "crawler",
+    "node crawler"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/PatrickSchababerle/schabbi-webscraper.git"
   },
-  "author": "Patrick Schababerle",
+  "author": "Patrick Schababerle <patrick.schababerle@me.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/PatrickSchababerle/schabbi-webscraper/issues"
