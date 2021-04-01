@@ -9,7 +9,8 @@ class Schabbi {
         this.result = [];
         this.options = {
             includeExternalLinks : false,
-            userAgent : "Mozilla/5.0 (compatible; schabbi-webscraper/1.0.0; +https://github.com/PatrickSchababerle/schabbi-webscaper)"
+            userAgent : "Mozilla/5.0 (compatible; schabbi-webscraper/1.0.0; +https://github.com/PatrickSchababerle/schabbi-webscaper)",
+            browser : {}
         }
     }
     withOptions(object){
@@ -31,51 +32,69 @@ class Schabbi {
 
         return (async () => {
 
-            const page = await browser.newPage();
-            
-            await page.setUserAgent(self.options.userAgent);
+            try{
 
-            const response = await page.goto(url, {
-                waitUntil : 'networkidle0'
-            });
+                const page = await browser.newPage();
+                
+                await page.setUserAgent(self.options.userAgent);
 
-            const hrefs = await page.$$eval('a[href*="/"]', as => as.map(a => a.href));
-            const chain = response.request().redirectChain();
-
-            var status_code;
-
-            if(chain.length > 0){
-                status_code = chain[0].response().status();
-            }else{
-                status_code = response.status();
-            }
-
-            if(url.domain() === self.domain){
-                hrefs.forEach((href) => {
-                    if(href.domain() === url.domain() || self.options.includeExternalLinks){
-                        if(self.finished.indexOf(href) == -1 && !self.queue.contained(href)){
-                            self.queue.enqueue(href);
-                        }
-                    }
+                const response = await page.goto(url, {
+                    waitUntil : 'networkidle0'
                 });
+
+                const hrefs = await page.$$eval('a[href*="/"]', as => as.map(a => a.href));
+                const chain = response.request().redirectChain();
+
+                var status_code;
+
+                if(chain.length > 0){
+                    status_code = chain[0].response().status();
+                }else{
+                    status_code = response.status();
+                }
+
+                if(url.domain() === self.domain){
+                    hrefs.forEach((href) => {
+                        if(href.domain() === url.domain() || self.options.includeExternalLinks){
+                            if(self.finished.indexOf(href) == -1 && !self.queue.contained(href)){
+                                self.queue.enqueue(href);
+                            }
+                        }
+                    });
+                }
+
+                const cookies = await page._client.send('Network.getAllCookies');
+
+                self.result.push({
+                    url : url,
+                    status : status_code,
+                    cookies : cookies.cookies
+                });
+
+                self.finished.push(url);
+                self.queue.dequeue(url);
+
+                await page.close();
+
+                return true;
+
+            }catch(e){
+
+                self.result.push({
+                    url : url,
+                    status : e.message
+                });
+
+                self.finished.push(url);
+
             }
-
-            self.result.push({
-                url : url,
-                status : status_code
-            });
-
-            self.finished.push(url);
-            self.queue.dequeue(url);
-
-            return true;
 
         })();
     }
     crawl(){
         var self = this;
         return (async () => {
-            const browser = await puppeteer.launch();
+            const browser = await puppeteer.launch(self.options.browser);
             while(!self.queue.isEmpty()){
                 await self.getPage(browser);
             }

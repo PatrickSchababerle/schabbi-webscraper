@@ -62,6 +62,16 @@ Schabbi is returning a promise which will be resolved as soon as the crawl has f
 | setUrl( String ) | Set initial url |
 | crawl() | Start the crawling |
 
+## Configuration
+
+| Option | Description | Type |
+|--|--|--|
+| includeExternalLinks | Determine if Schabbi should output external links in the results | BOOLEAN |
+| userAgent | Use a custom User Agent for crawling | STRING |
+| browser | Settings for Puppeteer. All Puppeteer browser launch arguments are accepted | OBJECT |
+
+Visit the examples for detailed information.
+
 ## About this project
 
 This is one of my first projects on github to be available for you all out there. Please feel free to provide feedback :)
