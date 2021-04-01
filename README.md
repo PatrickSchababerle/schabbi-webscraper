@@ -5,7 +5,7 @@
 
 <!-- [END badges] -->
 
-# Schabbi Webscaper
+# Schabbi Webscraper
 
 Easy to use and simple webcrawler.
 
