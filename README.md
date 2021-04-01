@@ -1,12 +1,13 @@
-<!-- [START badges] -->
+# schabbi-webscraper
 
-[![Build Status](https://travis-ci.com/PatrickSchababerle/schabbi-webscraper.svg?token=x3Xxx6fmnZtByDoY9d4v&branch=master)](https://travis-ci.com/PatrickSchababerle/schabbi-webscraper)
-[![npm puppeteer package](https://img.shields.io/npm/v/schabbi)](https://npmjs.org/package/schabbi)
+[![semantic release](https://github.com/PatrickSchababerle/schabbi-webscraper/workflows/semantic%20release/badge.svg)](https://github.com/PatrickSchababerle/schabbi-webscraper/actions?query=workflow%3A%22semantic+release%22) [![coverage](https://github.com/PatrickSchababerle/schabbi-webscraper/workflows/coverage/badge.svg)](https://PatrickSchababerle.github.io/schabbi-webscraper/) [![npm](https://badge.fury.io/js/schabbi-webscraper.svg)](https://www.npmjs.com/package/schabbi-webscraper)
 
-<!-- [END badges] -->
+Easy to use crawling solution for websites.
 
-# Schabbi Webscaper
+## Install
 
-Easy to use and simple webcrawler.
+```
+npm install schabbi-webscraper
+```
 
-<a href="https://www.npmjs.com/package/schabbi">Schabbi on npm</a>
+<!-- anything below this line will be safe from template removal -->
