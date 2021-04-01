@@ -9,6 +9,11 @@
 
 Easy to use and simple webcrawler.
 
+## Requirements
+
+ - NodeJS v15.*
+ - npm v7.*
+
 ## Installation
 
 ### via NPM
