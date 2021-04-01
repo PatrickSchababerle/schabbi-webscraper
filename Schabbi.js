@@ -10,12 +10,6 @@ class Schabbi {
         this.result = [];
         this.maxAsyncs = 5;
         this.runtime = 0;
-        this.progressBar = new ProgressBar('Crawling [:bar] :current/:total', {
-            complete: '=',
-            incomplete: ' ',
-            width: 20,
-            total: 100
-        });
         this.followExternal = config.followExternal;
         this.freshStart = config.freshStart;
         this.db = new Sequelize(config.db.database, config.db.username, config.db.password, config.db.sequelizeOpts);
