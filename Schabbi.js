@@ -8,7 +8,8 @@ class Schabbi {
         this.finished = [];
         this.result = [];
         this.options = {
-            includeExternalLinks : false
+            includeExternalLinks : false,
+            userAgent : "Mozilla/5.0 (compatible; schabbi-webscraper/1.0.0; +https://github.com/PatrickSchababerle/schabbi-webscaper)"
         }
     }
     withOptions(object){
@@ -32,6 +33,8 @@ class Schabbi {
 
             const page = await browser.newPage();
             
+            await page.setUserAgent(self.options.userAgent);
+
             const response = await page.goto(url, {
                 waitUntil : 'networkidle0'
             });
