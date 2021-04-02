@@ -28,14 +28,14 @@ Easy to use and simple webcrawler.
 
 #### Standard use case
 
-    const  Schabbi = require('schabbi');
+    const  Schabbi = require('schabbi-webscraper');
     const  Crawler = new Schabbi();      
     
     Crawler.setUrl('https://www.example.com').crawl();
 
 #### With custom option parameters
 
-    const  Schabbi = require('schabbi');
+    const  Schabbi = require('schabbi-webscraper');
     const  Crawler = new  Schabbi();
 
     Crawler.setUrl('https://www.example.com').withOptions({
@@ -47,7 +47,7 @@ Easy to use and simple webcrawler.
 
 Schabbi is returning a promise which will be resolved as soon as the crawl has finished:
 
-    const  Schabbi = require('schabbi');
+    const  Schabbi = require('schabbi-webscraper');
     const  Crawler = new  Schabbi();
     
     Crawler.setUrl('https://www.example.com').crawl().then((result) => {
