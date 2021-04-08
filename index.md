@@ -1,4 +1,4 @@
-<p align="center"><img src="/schabbi_teaser.png" alt="Schabbi Webscraper"></p>
+<p align="center"><img src="https://github.com/PatrickSchababerle/schabbi-webscraper/blob/gh-pages/schabbi_teaser.png?raw=true" alt="Schabbi Webscraper"></p>
 
 # Schabbi Webscraper
 
