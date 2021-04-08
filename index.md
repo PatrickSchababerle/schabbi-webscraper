@@ -1,37 +1,82 @@
-## Welcome to GitHub Pages
+<p align="center"><img src="/schabbi_teaser.png" alt="Schabbi Webscraper"></p>
 
-You can use the [editor on GitHub](https://github.com/PatrickSchababerle/schabbi-webscraper/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+# Schabbi Webscraper
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+<!-- [START badges] -->
 
-### Markdown
+[![Build Status](https://travis-ci.com/PatrickSchababerle/schabbi-webscraper.svg?token=x3Xxx6fmnZtByDoY9d4v&branch=master)](https://travis-ci.com/PatrickSchababerle/schabbi-webscraper)
+[![npm puppeteer package](https://img.shields.io/npm/v/schabbi-webscraper)](https://npmjs.org/package/schabbi-webscraper)
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+<!-- [END badges] -->
 
-```markdown
-Syntax highlighted code block
+Easy to use and simple webcrawler.
 
-# Header 1
-## Header 2
-### Header 3
+## Requirements
 
-- Bulleted
-- List
+ - NodeJS v15.*
 
-1. Numbered
-2. List
+## Installation
 
-**Bold** and _Italic_ and `Code` text
+### via NPM
 
-[Link](url) and ![Image](src)
-```
+    $ npm i schabbi-webscraper
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+### via Github
 
-### Jekyll Themes
+    $ git clone https://github.com/PatrickSchababerle/schabbi-webscraper
+    $ npm install
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/PatrickSchababerle/schabbi-webscraper/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+## Usage
 
-### Support or Contact
+#### Standard use case
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+    const  Schabbi = require('schabbi-webscraper');
+    const  Crawler = new Schabbi();      
+    
+    Crawler.setUrl('https://www.example.com').crawl();
+
+#### With custom option parameters
+
+    const  Schabbi = require('schabbi-webscraper');
+    const  Crawler = new  Schabbi();
+
+    Crawler.setUrl('https://www.example.com').withOptions({
+	    includeExternalLinks :  true,
+	    userAgent :  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36"
+    }).crawl();
+
+#### Further work with result
+
+Schabbi is returning a promise which will be resolved as soon as the crawl has finished:
+
+    const  Schabbi = require('schabbi-webscraper');
+    const  Crawler = new  Schabbi();
+    
+    Crawler.setUrl('https://www.example.com').crawl().then((result) => {
+    	console.log(result);
+    });
+
+## Methods
+
+| Method | Description |
+|--|--|
+| withOptions( Object ) | Set custom options for the crawler |
+| setUrl( String ) | Set initial url |
+| crawl() | Start the crawling |
+
+
+## Configuration
+
+| Option | Description | Type |
+|--|--|--|
+| includeExternalLinks | Determine if Schabbi should output external links in the results | BOOLEAN |
+| userAgent | Use a custom User Agent for crawling | STRING |
+| browser | Settings for Puppeteer. All Puppeteer browser launch arguments are accepted | OBJECT |
+
+
+Visit the examples for detailed information.
+
+
+## About this project
+
+This is one of my first projects on github to be available for you all out there. Please feel free to provide feedback :)
