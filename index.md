@@ -29,7 +29,7 @@ Easy to use and simple webcrawler.
 ## Usage
 
 #### Standard use case
-
+ 
     const  Schabbi = require('schabbi-webscraper');
     const  Crawler = new Schabbi();      
     
