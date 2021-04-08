@@ -1,6 +1,6 @@
 {
   "name": "schabbi-webscraper",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Easy to use crawling solution for websites.",
   "main": "Schabbi.js",
   "scripts": {
@@ -20,7 +20,7 @@
     "url": "git+https://github.com/PatrickSchababerle/schabbi-webscraper.git"
   },
   "author": "Patrick Schababerle <patrick.schababerle@me.com>",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/PatrickSchababerle/schabbi-webscraper/issues"
   },
