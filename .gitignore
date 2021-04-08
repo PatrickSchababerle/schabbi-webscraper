@@ -1,1 +1,4 @@
 node_modules/
+.idea/modules.xml
+.idea/schabbi-webscraper.iml
+.idea/vcs.xml
