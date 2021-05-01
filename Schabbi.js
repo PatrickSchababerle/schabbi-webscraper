@@ -10,6 +10,10 @@ class Schabbi {
         this.options = {
             includeExternalLinks : false,
             userAgent : "Mozilla/5.0 (compatible; schabbi-webscraper/1.0.0; +https://github.com/PatrickSchababerle/schabbi-webscaper)",
+            authentication : {
+                username : false,
+                password : false
+            },
             browser : {}
         }
     }
@@ -58,6 +62,10 @@ class Schabbi {
                 const page = await browser.newPage();
                 
                 await page.setUserAgent(self.options.userAgent);
+
+                if (self.options.authentication) {
+                    await page.authenticate(self.options.authentication);
+                }
 
                 const response = await page.goto(url, {
                     waitUntil : 'networkidle0'
