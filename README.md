@@ -7,10 +7,6 @@
 [![Build Status](https://travis-ci.com/PatrickSchababerle/schabbi-webscraper.svg?token=x3Xxx6fmnZtByDoY9d4v&branch=master)](https://travis-ci.com/PatrickSchababerle/schabbi-webscraper)
 [![npm puppeteer package](https://img.shields.io/npm/v/schabbi-webscraper)](https://npmjs.org/package/schabbi-webscraper)
 
-<a href="https://www.buymeacoffee.com/schabbi" target="_blank">
-<img src="https://cdn.buymeacoffee.com/buttons/v2/default-blue.png" alt="Buy Me A Coffee" style="height: 20px !important;width: 100px !important;" >
-</a>
-
 <!-- [END badges] -->
 
 Easy to use and simple webcrawler.
@@ -89,6 +85,6 @@ Visit the examples for detailed information.
 
 This is one of my first projects on github to be available for you all out there. Please feel free to provide feedback :) Also you can support the future development of this project with a coffee:
 
-https://www.buymeacoffee.com/schabbi
+<a href="https://www.buymeacoffee.com/schabbi" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-blue.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
 
 Thank you ;)
