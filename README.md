@@ -83,4 +83,8 @@ Visit the examples for detailed information.
 
 ## About this project
 
-This is one of my first projects on github to be available for you all out there. Please feel free to provide feedback :)
+This is one of my first projects on github to be available for you all out there. Please feel free to provide feedback :) Also you can support the future development of this project with a coffee:
+
+https://www.buymeacoffee.com/schabbi
+
+Thank you ;)
