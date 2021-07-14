@@ -18,48 +18,48 @@ Easy to use and simple webcrawler.
 ## Installation
 
 ### via NPM
-
-    $ npm i schabbi-webscraper
-
+```bash
+$ npm i schabbi-webscraper
+```
 ### via Github
-
-    $ git clone https://github.com/PatrickSchababerle/schabbi-webscraper
-    $ npm install
-
+```bash
+$ git clone https://github.com/PatrickSchababerle/schabbi-webscraper
+$ npm install
+```
 ## Usage
 
 #### Standard use case
 ```js
-    const  Schabbi = require('schabbi-webscraper');
-    const  Crawler = new Schabbi();      
-    
-    Crawler.setUrl('https://www.example.com').crawl();
+const  Schabbi = require('schabbi-webscraper');
+const  Crawler = new Schabbi();      
+
+Crawler.setUrl('https://www.example.com').crawl();
 ```
 #### With custom option parameters
+```js
+const  Schabbi = require('schabbi-webscraper');
+const  Crawler = new  Schabbi();
 
-    const  Schabbi = require('schabbi-webscraper');
-    const  Crawler = new  Schabbi();
-
-    Crawler.setUrl('https://www.example.com').withOptions({
-	    includeExternalLinks :  true,
-	    userAgent :  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36",
-        authentication : {
-            username : 'Testuser',
-            password : 'Test'
-        }
-    }).crawl();
-
+Crawler.setUrl('https://www.example.com').withOptions({
+    includeExternalLinks :  true,
+    userAgent :  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36",
+authentication : {
+    username : 'Testuser',
+    password : 'Test'
+}
+}).crawl();
+```
 #### Further work with result
 
 Schabbi is returning a promise which will be resolved as soon as the crawl has finished:
+```js
+const  Schabbi = require('schabbi-webscraper');
+const  Crawler = new  Schabbi();
 
-    const  Schabbi = require('schabbi-webscraper');
-    const  Crawler = new  Schabbi();
-    
-    Crawler.setUrl('https://www.example.com').crawl().then((result) => {
-    	console.log(result);
-    });
-
+Crawler.setUrl('https://www.example.com').crawl().then((result) => {
+console.log(result);
+});
+```
 ## Methods
 
 | Method | Description |
