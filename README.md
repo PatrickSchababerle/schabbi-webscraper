@@ -43,10 +43,10 @@ const  Crawler = new  Schabbi();
 Crawler.setUrl('https://www.example.com').withOptions({
     includeExternalLinks :  true,
     userAgent :  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36",
-authentication : {
-    username : 'Testuser',
-    password : 'Test'
-}
+    authentication : {
+        username : 'Testuser',
+        password : 'Test'
+    }
 }).crawl();
 ```
 #### Further work with result
@@ -57,7 +57,7 @@ const  Schabbi = require('schabbi-webscraper');
 const  Crawler = new  Schabbi();
 
 Crawler.setUrl('https://www.example.com').crawl().then((result) => {
-console.log(result);
+    console.log(result);
 });
 ```
 ## Methods
