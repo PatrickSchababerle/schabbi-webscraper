@@ -1,6 +1,6 @@
 {
   "name": "schabbi-webscraper",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Easy to use crawling solution for websites.",
   "main": "Schabbi.js",
   "scripts": {
@@ -26,6 +26,6 @@
   },
   "homepage": "https://github.com/PatrickSchababerle/schabbi-webscraper#readme",
   "dependencies": {
-    "puppeteer": "^8.0.0"
+    "puppeteer": "^10.1.0"
   }
 }
