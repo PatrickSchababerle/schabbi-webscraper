@@ -60,6 +60,20 @@ Crawler.setUrl('https://www.digitalsterne.de').withOptions({
     }
 }).crawl();
 ```
+#### Work with the crawled pages while the're beeing processed
+
+With custom functions you can perform actions on each crawled page. The results will be pushed into the final results.
+```js
+const  Schabbi = require('schabbi-webscraper');
+const  Crawler = new  Schabbi();
+
+Crawler.setUrl('https://digitalsterne.de').eachPage((page) => {
+    const links = page.$$eval('a', as => as.map(a => a.href));
+    return links;
+}).crawl().then((result) => {
+    console.log(result);
+});
+```
 #### Further work with result
 
 Schabbi is returning a promise which will be resolved as soon as the crawl has finished:
