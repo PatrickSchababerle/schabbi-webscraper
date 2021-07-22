@@ -49,8 +49,6 @@ Crawler.setUrl('https://www.example.com').withOptions({
     }
 }).crawl();
 ```
-#### With custom option parameters
-
 You can decide which crawled links are added to the queue by using the queue option. F.e. to crawl only pages with a specific attribute, class or target:
 ```js
 const  Schabbi = require('schabbi-webscraper');
