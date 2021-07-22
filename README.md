@@ -49,6 +49,19 @@ Crawler.setUrl('https://www.example.com').withOptions({
     }
 }).crawl();
 ```
+#### With custom option parameters
+
+You can decide which crawled links are added to the queue by using the queue option. F.e. to crawl only pages with a specific attribute, class or target:
+```js
+const  Schabbi = require('schabbi-webscraper');
+const  Crawler = new  Schabbi();
+
+Crawler.setUrl('https://www.digitalsterne.de').withOptions({
+    queue : {
+        pattern : 'a[href*="/2021/05/06"]'
+    }
+}).crawl();
+```
 #### Further work with result
 
 Schabbi is returning a promise which will be resolved as soon as the crawl has finished:
@@ -76,15 +89,13 @@ Crawler.setUrl('https://www.example.com').crawl().then((result) => {
 | includeExternalLinks | Determine if Schabbi should output external links in the results | BOOLEAN |
 | userAgent | Use a custom User Agent for crawling | STRING |
 | browser | Settings for Puppeteer. All Puppeteer browser launch arguments are accepted | OBJECT |
+| queue | Set custom pattern for evaluation of links inside crawled pages. | OBJECT |
 
-
-Visit the examples for detailed information.
+Visit the examples for detailed information on how to use options properly.
 
 
 ## About this project
 
-This is one of my first projects on github to be available for you all out there. Please feel free to provide feedback :) Also you can support the future development of this project with a coffee:
+This is one of my first projects on github to be available for you all out there. Please feel free to provide feedback! Also you can support the future development of this project with a coffee:
 
-<a href="https://www.buymeacoffee.com/schabbi" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-blue.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
-
-Thank you ;)
+<a href="https://www.buymeacoffee.com/schabbi" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-blue.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 175px !important;" ></a>
