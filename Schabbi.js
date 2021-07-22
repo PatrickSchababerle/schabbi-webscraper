@@ -14,7 +14,10 @@ class Schabbi {
                 username : false,
                 password : false
             },
-            browser : {}
+            browser : {},
+            queue : {
+                pattern : 'a[href*="/"]'
+            }
         }
     }
 
@@ -71,7 +74,7 @@ class Schabbi {
                     waitUntil : 'networkidle0'
                 });
 
-                const hrefs = await page.$$eval('a[href*="/"]', as => as.map(a => a.href));
+                const hrefs = await page.$$eval(this.options.queue.pattern, as => as.map(a => a.href));
                 const chain = response.request().redirectChain();
 
                 var status_code;
