@@ -67,7 +67,7 @@ With custom functions you can perform actions on each crawled page. The results 
 const  Schabbi = require('schabbi-webscraper');
 const  Crawler = new  Schabbi();
 
-Crawler.setUrl('https://digitalsterne.de').eachPage((page) => {
+Crawler.setUrl('https://digitalsterne.de').eachPage(async (page) => {
     const links = page.$$eval('a', as => as.map(a => a.href));
     return links;
 }).crawl().then((result) => {
