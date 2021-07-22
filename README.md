@@ -9,7 +9,14 @@
 
 <!-- [END badges] -->
 
-Easy to use and simple webcrawler.
+Lightweight and easy to use webcrawler.
+
+## Features
+
+- Fast and reliable
+- Supports custom page handling
+- Result contains also all cookies
+- Accepts all puppeteer parameters
 
 ## Requirements
 
