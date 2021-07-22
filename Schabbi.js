@@ -7,11 +7,13 @@ class Schabbi {
         this.queue = new Queue();
         this.finished = [];
         this.result = [];
+        this.start_time = new Date();
         this.status = setInterval(() => {
             let done = this.finished.length;
             let open = this.queue.length();
             let sum = done + open;
-            process.stdout.write(`\rStatus: ${parseInt(done / sum * 100)} % || ${done} of ${sum} Pages crawled`);
+            let time = new Date();
+            process.stdout.write(`\rStatus: ${parseInt(done / sum * 100)} % || ${done} of ${sum} Pages crawled in ${formatMs(time - this.start_time)}`);
         }, 1000);
         this.options = {
             includeExternalLinks : false,
@@ -25,6 +27,7 @@ class Schabbi {
                 pattern : 'a[href*="/"]'
             }
         }
+        this.callback = false;
         console.clear();
     }
 
@@ -39,6 +42,16 @@ class Schabbi {
             var config = object[option];
             this.options[option] = config;
         }
+        return this;
+    }
+
+    /**
+     * Set a function to be executed on each page result from puppeteer
+     * @param callback  function    The function to be executed
+     * @returns {class}             Returning current Schabbi instance
+     */
+    eachPage(callback) {
+        this.callback = callback;
         return this;
     }
 
@@ -104,11 +117,17 @@ class Schabbi {
 
                 const cookies = await page._client.send('Network.getAllCookies');
 
-                self.result.push({
+                let temp_result = {
                     url : url,
                     status : status_code,
                     cookies : cookies.cookies
-                });
+                }
+
+                if(this.callback !== false) {
+                    temp_result['cb'] = await this.callback(page);
+                }
+
+                self.result.push(temp_result);
 
                 self.finished.push(url);
                 self.queue.dequeue(url);
@@ -160,6 +179,15 @@ class Schabbi {
 
 String.prototype.domain = function() {
     return this.replace('http://','').replace('https://','').replace('www.','').split(/[/?#]/)[0];
+}
+
+/**
+ * Helper function: Format milliseconds to d:hh:mm:ss
+ * @param seconds
+ * @returns {*}
+ */
+function formatMs(ms) {
+    return new Date(ms).toISOString().substr(11, 8);
 }
 
 /**
