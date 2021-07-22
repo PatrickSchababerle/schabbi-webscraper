@@ -7,6 +7,12 @@ class Schabbi {
         this.queue = new Queue();
         this.finished = [];
         this.result = [];
+        this.status = setInterval(() => {
+            let done = this.finished.length;
+            let open = this.queue.length();
+            let sum = done + open;
+            process.stdout.write(`\rStatus: ${parseInt(done / sum * 100)} % || ${done} of ${sum} Pages crawled`);
+        }, 1000);
         this.options = {
             includeExternalLinks : false,
             userAgent : "Mozilla/5.0 (compatible; schabbi-webscraper/1.0.0; +https://github.com/PatrickSchababerle/schabbi-webscaper)",
@@ -19,6 +25,7 @@ class Schabbi {
                 pattern : 'a[href*="/"]'
             }
         }
+        console.clear();
     }
 
     /**
@@ -136,6 +143,8 @@ class Schabbi {
             while(!self.queue.isEmpty()){
                 await self.getPage(browser);
             }
+            clearInterval(this.status);
+            console.clear();
             await browser.close();
             return self.result;
         })();
