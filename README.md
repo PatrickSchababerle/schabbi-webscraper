@@ -6,7 +6,9 @@
 [![npm puppeteer package](https://img.shields.io/npm/v/schabbi-webscraper)](https://npmjs.org/package/schabbi-webscraper)
 [![Package Quality](https://packagequality.com/shield/schabbi-webscraper.svg)](https://packagequality.com/#?package=schabbi-webscraper)
 [![Coverage Status](https://coveralls.io/repos/github/PatrickSchababerle/schabbi-webscraper/badge.svg?branch=master)](https://coveralls.io/github/PatrickSchababerle/schabbi-webscraper?branch=master)
-![Build Status](https://img.shields.io/david/PatrickSchababerle/schabbi-webscraper)
+![Dependencies](https://img.shields.io/david/PatrickSchababerle/schabbi-webscraper)
+![Downloads](https://img.shields.io/npm/dw/schabbi-webscraper)
+
 
 <!-- [END badges] -->
 
