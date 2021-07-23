@@ -1,5 +1,5 @@
 <p align="center"><img src="/schabbi_teaser.png" alt="Schabbi Webscraper"></p>
-# 
+<hr>
 <!-- [START badges] -->
 
 [![Build Status](https://travis-ci.com/PatrickSchababerle/schabbi-webscraper.svg?token=x3Xxx6fmnZtByDoY9d4v&branch=master)](https://travis-ci.com/PatrickSchababerle/schabbi-webscraper)
