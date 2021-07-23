@@ -45,7 +45,7 @@ Crawler.setUrl('https://www.example.com').crawl();
 #### With custom option parameters
 ```js
 const  Schabbi = require('schabbi-webscraper');
-const  Crawler = new  Schabbi();
+const  Crawler = new Schabbi();
 
 Crawler.setUrl('https://www.example.com').withOptions({
     includeExternalLinks :  true,
@@ -59,7 +59,7 @@ Crawler.setUrl('https://www.example.com').withOptions({
 You can decide which crawled links are added to the queue by using the queue option. F.e. to crawl only pages with a specific attribute, class or target:
 ```js
 const  Schabbi = require('schabbi-webscraper');
-const  Crawler = new  Schabbi();
+const  Crawler = new Schabbi();
 
 Crawler.setUrl('https://www.digitalsterne.de').withOptions({
     queue : {
@@ -72,7 +72,7 @@ Crawler.setUrl('https://www.digitalsterne.de').withOptions({
 With custom functions you can perform actions on each crawled page. The results will be pushed into the final results.
 ```js
 const  Schabbi = require('schabbi-webscraper');
-const  Crawler = new  Schabbi();
+const  Crawler = new Schabbi();
 
 Crawler.setUrl('https://digitalsterne.de').eachPage(async (page) => {
     const links = await page.$$eval('a', as => as.map(a => a.href));
@@ -86,7 +86,7 @@ Crawler.setUrl('https://digitalsterne.de').eachPage(async (page) => {
 Schabbi is returning a promise which will be resolved as soon as the crawl has finished:
 ```js
 const  Schabbi = require('schabbi-webscraper');
-const  Crawler = new  Schabbi();
+const  Crawler = new Schabbi();
 
 Crawler.setUrl('https://www.example.com').crawl().then((result) => {
     console.log(result);
