@@ -8,7 +8,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/PatrickSchababerle/schabbi-webscraper/badge.svg?branch=master)](https://coveralls.io/github/PatrickSchababerle/schabbi-webscraper?branch=master)
 ![Dependencies](https://img.shields.io/david/PatrickSchababerle/schabbi-webscraper)
 ![Downloads](https://img.shields.io/npm/dw/schabbi-webscraper)
-![Issues](https://img.shields.io/github/issues/PatrickSchababerle/schabbi-webscraper)
+![Size](https://img.shields.io/bundlephobia/min/schabbi-webscraper)
 
 
 <!-- [END badges] -->
