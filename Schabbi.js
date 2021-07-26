@@ -152,6 +152,7 @@ class Schabbi {
                 });
 
                 self.finished.push(url);
+                self.queue.dequeue(url);
 
                 self.queue.logger('error', 'URL: ' + url + ' | ' + e.message);
 
