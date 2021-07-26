@@ -60,6 +60,7 @@ Crawler.setUrl('https://www.example.com').withOptions({
 }).crawl();
 ```
 You can decide which crawled links are added to the queue by using the queue option. F.e. to crawl only pages with a specific attribute, class or target:
+
 ```js
 const  Schabbi = require('schabbi-webscraper');
 const  Crawler = new Schabbi();
@@ -70,6 +71,17 @@ Crawler.setUrl('https://www.digitalsterne.de').withOptions({
     }
 }).crawl();
 ```
+You can also decide if parameters are ignored while queuing:
+
+```js
+const  Schabbi = require('schabbi-webscraper');
+const  Crawler = new Schabbi();
+
+Crawler.setUrl('https://www.digitalsterne.de').withOptions({
+    ignoreUrlParameter : true
+}).crawl();
+```
+
 #### Work with the crawled pages while the're beeing processed
 
 With custom functions you can perform actions on each crawled page. The results will be pushed into the final results.
