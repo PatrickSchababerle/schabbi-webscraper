@@ -17,7 +17,7 @@ class Schabbi {
         }, 1000);
         this.options = {
             includeExternalLinks : false,
-            userAgent : "Mozilla/5.0 (compatible; schabbi-webscraper/1.0.0; +https://github.com/PatrickSchababerle/schabbi-webscaper)",
+            userAgent : "Mozilla/5.0 (compatible; schabbi-webscraper/1.0.0; +https://github.com/PatrickSchababerle/schabbi-webscraper)",
             authentication : {
                 username : false,
                 password : false
@@ -74,17 +74,17 @@ class Schabbi {
      * @return {promise}        Returning promise till page has been crawled
      */
 
-    getPage(browser){
+    #getPage(browser){
 
         var self = this;
         const url = this.queue.peek();
 
         return (async () => {
 
+            const page = await browser.newPage();
+
             try{
 
-                const page = await browser.newPage();
-                
                 await page.setUserAgent(self.options.userAgent);
 
                 if (self.options.authentication) {
@@ -142,12 +142,16 @@ class Schabbi {
 
             }catch(e){
 
+                await page.close();
+
                 self.result.push({
                     url : url,
                     status : e.message
                 });
 
                 self.finished.push(url);
+
+                return true;
 
             }
 
@@ -164,7 +168,7 @@ class Schabbi {
         return (async () => {
             const browser = await puppeteer.launch(self.options.browser);
             while(!self.queue.isEmpty()){
-                await self.getPage(browser);
+                await self.#getPage(browser);
             }
             clearInterval(this.status);
             console.clear();
