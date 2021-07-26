@@ -71,7 +71,7 @@ Crawler.setUrl('https://www.digitalsterne.de').withOptions({
     }
 }).crawl();
 ```
-You can also decide if parameters are ignored while queuing:
+You can also decide if parameters are ignored when adding urls to the queue:
 
 ```js
 const  Schabbi = require('schabbi-webscraper');
