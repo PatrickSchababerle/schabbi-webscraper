@@ -10,8 +10,8 @@ class Queue {
         this.elements = [];
         this.run_id = new Date().valueOf();
         this.loggers = {};
-        this.log_dir = __dirname + '/logs/schabbi/';
-        (async () => {
+        this.log_dir = __dirname + '/logs/';
+        this.init_logger = (async () => {
             await new Promise((resolve) => {
                 fs.mkdir(this.log_dir, { recursive: true }, () => {
                     resolve();

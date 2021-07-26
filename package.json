@@ -1,6 +1,6 @@
 {
   "name": "schabbi-webscraper",
-  "version": "1.1.62",
+  "version": "1.1.63",
   "description": "Lightweight and easy to use crawling solution for websites.",
   "main": "Schabbi.js",
   "scripts": {
