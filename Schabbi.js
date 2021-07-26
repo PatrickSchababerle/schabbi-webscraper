@@ -1,3 +1,5 @@
+global.__basedir = __dirname;
+
 const puppeteer = require('puppeteer');
 const Queue = require('./helper/queue.js');
 
@@ -150,6 +152,8 @@ class Schabbi {
                 });
 
                 self.finished.push(url);
+
+                self.queue.logger('error', 'URL: ' + url + ' | ' + e.message);
 
                 return true;
 
