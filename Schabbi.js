@@ -25,7 +25,8 @@ class Schabbi {
             browser : {},
             queue : {
                 pattern : 'a[href*="/"]'
-            }
+            },
+            ignoreUrlParameter : false
         }
         this.callback = false;
         console.clear();
@@ -107,6 +108,9 @@ class Schabbi {
 
                 if(url.domain() === self.domain){
                     hrefs.forEach((href) => {
+                        if(self.options.ignoreUrlParameter) {
+                            href = href.split('?')[0];
+                        }
                         if(href.domain() === url.domain() || self.options.includeExternalLinks){
                             if(self.finished.indexOf(href) == -1 && !self.queue.contained(href)){
                                 self.queue.enqueue(href);
