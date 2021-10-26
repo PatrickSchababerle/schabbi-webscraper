@@ -6,7 +6,6 @@
 [![npm puppeteer package](https://img.shields.io/npm/v/schabbi-webscraper)](https://npmjs.org/package/schabbi-webscraper)
 [![Package Quality](https://packagequality.com/shield/schabbi-webscraper.svg)](https://packagequality.com/#?package=schabbi-webscraper)
 ![Downloads](https://img.shields.io/npm/dw/schabbi-webscraper)
-![Size](https://img.shields.io/bundlephobia/min/schabbi-webscraper)
 
 
 <!-- [END badges] -->
@@ -129,6 +128,4 @@ Visit the examples for detailed information on how to use options properly.
 
 ## About this project
 
-This is one of my first projects on github to be available for you all out there. Please feel free to provide feedback! Also you can support the future development of this project with a coffee:
-
-<a href="https://www.buymeacoffee.com/schabbi" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-blue.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 175px !important;" ></a>
+This is one of my first projects on github to be available for you all out there. Please feel free to provide feedback!
