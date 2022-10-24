@@ -121,12 +121,12 @@ class Schabbi {
                     });
                 }
 
-                const cookies = await page._client.send('Network.getAllCookies');
+                const cookies = await page.cookies();
 
                 let temp_result = {
                     url : url,
                     status : status_code,
-                    cookies : cookies.cookies
+                    cookies : cookies
                 }
 
                 if(this.callback !== false) {
