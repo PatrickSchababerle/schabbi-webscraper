@@ -27,6 +27,6 @@
   "homepage": "https://github.com/PatrickSchababerle/schabbi-webscraper#readme",
   "dependencies": {
     "fs": "^0.0.1-security",
-    "puppeteer": "^19.1.0"
+    "puppeteer": "^22.11.2"
   }
 }
