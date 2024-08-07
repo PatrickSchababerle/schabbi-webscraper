@@ -28,7 +28,11 @@ class Schabbi {
             queue : {
                 pattern : 'a[href*="/"]'
             },
-            ignoreUrlParameter : false
+            ignoreUrlParameter : false,
+            args: [
+                '--no-sandbox',
+                '--disable-setuid-sandbox'
+            ],
         }
         this.callback = false;
         console.clear();
